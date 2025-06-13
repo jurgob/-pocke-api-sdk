@@ -15,10 +15,7 @@ export function createCoreClient(coreOptions: SDKOptions = {
     fetch: globalThis.fetch
 }) {
     async function httpRquest<T extends z.ZodTypeAny>(request:SDKHTTPRequest, schema: T): Promise<z.infer<T>>{
-        console.log("Making HTTP request to:", request.endpoint);
         const url = `${coreOptions.baseUrl}${request.endpoint}`;
-        // const url = new URL(request.endpoint, CoreOptions.baseUrl);
-        console.log("Request URL:", url.toString());
         const response = await fetch(new Request(url.toString(), {
             method: "GET",
             headers: {

@@ -1,6 +1,6 @@
 import { createClient} from "./index.js"
 
-async function main() {
+export async function main() {
     console.log("PokeApi initialized");
     const pokeApi = createClient();
     console.log("Pockemon List:");
