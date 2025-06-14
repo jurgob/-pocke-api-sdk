@@ -7,18 +7,21 @@
     "examples": "tsx src/examples.ts",
     "test": "vitest run --coverage --reporter=verbose",
     "typecheck": "tsc --noEmit",
-    "cov:report":"npx http-server ./coverage --cors --port 8080",
+    "cov:report": "npx http-server ./coverage --cors --port 8080",
     "all": "turbo run --ui tui --continue typecheck test "
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^9.29.0",
     "@vitest/coverage-v8": "^3.2.3",
+    "eslint": "^9.29.0",
     "tsup": "^8.5.0",
     "tsx": "^4.20.1",
     "turbo": "^2.5.4",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.0",
     "vitest": "^3.2.3"
   },
   "dependencies": {
