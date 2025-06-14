@@ -8,7 +8,8 @@
     "test": "vitest run --coverage --reporter=verbose",
     "typecheck": "tsc --noEmit",
     "cov:report": "npx http-server ./coverage --cors --port 8080",
-    "all": "turbo run --ui tui --continue typecheck test "
+    "lint": "eslint ./src --ext .ts",
+    "all": "turbo run --continue typecheck test lint"
   },
   "author": "",
   "license": "ISC",

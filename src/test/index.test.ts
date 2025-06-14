@@ -4,7 +4,7 @@ import { PockeApiHTTPError } from "../errors.js";
 describe('PokeApi SDK', () => {
     
     it('should be able to initialize the client', () => {
-        let pokeApi = createClient();
+        const pokeApi = createClient();
         expect(pokeApi).toBeDefined();
     });
 
@@ -14,7 +14,7 @@ describe('PokeApi SDK', () => {
 describe('PokeApi SDK, Config errors', () => {
     
     it('should be able to initialize the client', async () => {
-        let pokeApi = createClient({
+        const pokeApi = createClient({
             baseUrl: "https://fakepokeapinotexisting.co/api/v2",
         });
         const error = await pokeApi.pokemon.get("pikachu").catch(e => e);
@@ -26,7 +26,7 @@ describe('PokeApi SDK, Config errors', () => {
 });
 
 describe('PokeApi SDK - Pokemon', () => {
-    let pokeApi = createClient();
+    const pokeApi = createClient();
 
     it('should fetch a pokemon by name', async () => {
         const pokemon = await pokeApi.pokemon.get("pikachu");
@@ -61,7 +61,7 @@ describe('PokeApi SDK - Pokemon', () => {
 });
 
 describe('PokeApi SDK - Generations', () => {
-    let pokeApi = createClient();
+    const pokeApi = createClient();
 
     it('should fetch a generation by name', async () => {
         const generation = await pokeApi.generation.get("generation-i");
