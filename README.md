@@ -47,7 +47,7 @@ Alternatively, you can import individual components from the SDK, such as:
 ```ts
 import { getPokemon, getPokemonList } from '../funcs/pockemon.js';
 import { createCoreClient } from '../core.js';
-
+const core = createCoreClient();
 const result = await getPokemon(core, pokemonName);
 ```
 
