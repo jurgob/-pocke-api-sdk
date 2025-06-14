@@ -10,6 +10,21 @@ describe('PokeApi SDK', () => {
 
 });
 
+
+describe('PokeApi SDK, Config errors', () => {
+    
+    it('should be able to initialize the client', async () => {
+        let pokeApi = createClient({
+            baseUrl: "https://fakepokeapinotexisting.co/api/v2",
+        });
+        const error = await pokeApi.pockemon.get("pikachu").catch(e => e);
+        expect(error).toBeDefined();
+        expect(error).toBeInstanceOf(TypeError);
+
+    });
+
+});
+
 describe('PokeApi SDK - Pockemon', () => {
     let pokeApi = createClient();
 
@@ -63,3 +78,4 @@ describe('PokeApi SDK - Generations', () => {
     });
 
 });
+

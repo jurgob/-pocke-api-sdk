@@ -11,7 +11,7 @@ This SDK covers the following PokeAPI endpoints:
 
 It also includes pagination support for retrieving lists of resources.
 
-## Installation (NOT DONE YET)
+## SDK Installation (NOT DONE YET)
 
 ```bash
 # Example using npm
@@ -50,7 +50,7 @@ const result = await getPokemon(core, pokemonName);
 ```
 
 
-for more example look at the `src/examples.ts` file in this repository
+for more example look at the [`src/examples.ts`](src/examples.ts) file in this repository
 
 
 ## Contributing
@@ -82,10 +82,12 @@ To run the tests, use the following command:
 ```pnm run cov:report``` -> allow to navigate the code coverate report (from the last `npm run test` made)
 
 
-
-
 ### Design Decisions
- - Abstraction: The SDK provides higher-level functions (e.g., getPokemonByName) to simplify common API requests.
-- zod for parsing api responses
- - Provide some error handling types
-
+- **Abstraction:** Higher-level functions organized by namespace (e.g., `pokeApi.pokemon.get()`) to simplify common API requests
+- **Pagination**: Opaque abstraction maintains original pagination shape while replacing URLs with boolean flags
+- **Modular exports:** Each module exports independently for better tree-shaking and bundler compatibility
+- **No default exports:** Named exports only for bundler-friendly imports
+- **Type safety:** Zod schemas parse and validate all API responses
+- **Error handling:** Custom error classes for better HTTP error management
+- **Centralized HTTP logic:** Unified request handling enables future SDK expansions like custom fetch implementations and middleware support
+- **Tested examples:** All examples are type-checked and tested to ensure accuracy and support future documentation generation
