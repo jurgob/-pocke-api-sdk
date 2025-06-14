@@ -55,7 +55,7 @@ for more example look at the `src/examples.ts` file in this repository
 
 ## Contributing
 
-## Installing
+## Installing (NOT DONE YET)
 
 clone this repo, then install dependencies with:
 
