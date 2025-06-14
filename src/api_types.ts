@@ -6,7 +6,7 @@ export const PaginationDataSchema = z.object({
 });
 export type PaginationData = z.infer<typeof PaginationDataSchema>;
 
-export const PockemonSchema = z.object({
+export const PokemonSchema = z.object({
     name: z.string(),
     id: z.number(),
     height: z.number(),
@@ -31,7 +31,7 @@ export const PockemonSchema = z.object({
 
 
 
-export const PockemonListSchema = z.object({
+export const PokemonListSchema = z.object({
     ...PaginationDataSchema.shape,
     results: z.array(z.object({
         name: z.string(),

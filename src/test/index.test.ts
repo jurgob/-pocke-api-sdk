@@ -17,7 +17,7 @@ describe('PokeApi SDK, Config errors', () => {
         let pokeApi = createClient({
             baseUrl: "https://fakepokeapinotexisting.co/api/v2",
         });
-        const error = await pokeApi.pockemon.get("pikachu").catch(e => e);
+        const error = await pokeApi.pokemon.get("pikachu").catch(e => e);
         expect(error).toBeDefined();
         expect(error).toBeInstanceOf(TypeError);
 
@@ -25,17 +25,17 @@ describe('PokeApi SDK, Config errors', () => {
 
 });
 
-describe('PokeApi SDK - Pockemon', () => {
+describe('PokeApi SDK - Pokemon', () => {
     let pokeApi = createClient();
 
     it('should fetch a pokemon by name', async () => {
-        const pokemon = await pokeApi.pockemon.get("pikachu");
+        const pokemon = await pokeApi.pokemon.get("pikachu");
         expect(pokemon).toBeDefined();
         expect(pokemon.name).toBe("pikachu");
     });
 
     it('should fetch a list of pokemon', async () => {
-        const pokemonList = await pokeApi.pockemon.list(12, 0);
+        const pokemonList = await pokeApi.pokemon.list(12, 0);
         expect(pokemonList).toBeDefined();
         expect(pokemonList.results.length).toBe(12);
         expect(pokemonList.next).toBe(true);
@@ -43,7 +43,7 @@ describe('PokeApi SDK - Pockemon', () => {
     });
 
     it('should fetch a list of pokemon', async () => {
-        const pokemonList = await pokeApi.pockemon.list(5, 1);
+        const pokemonList = await pokeApi.pokemon.list(5, 1);
         expect(pokemonList).toBeDefined();
         expect(pokemonList.results.length).toBe(5);
         expect(pokemonList.next).toBe(true);
@@ -51,8 +51,8 @@ describe('PokeApi SDK - Pockemon', () => {
     });
     
     
-    it('should throw an error when getting a non-existing pockemon', async () => {
-        const error = await pokeApi.pockemon.get("not-existing").catch(e => e);
+    it('should throw an error when getting a non-existing pokemon', async () => {
+        const error = await pokeApi.pokemon.get("not-existing").catch(e => e);
         expect(error).toBeDefined();
         expect(error).toBeInstanceOf(PockeApiHTTPError);
         expect(error.statusCode).toBe(404);
@@ -78,7 +78,7 @@ describe('PokeApi SDK - Generations', () => {
     });
     
     
-    it('should throw an error when getting a non-existing pockemon', async () => {
+    it('should throw an error when getting a non-existing generation', async () => {
         const error = await pokeApi.generation.get("not-existing").catch(e => e);
         expect(error).toBeDefined();
         expect(error).toBeInstanceOf(PockeApiHTTPError);

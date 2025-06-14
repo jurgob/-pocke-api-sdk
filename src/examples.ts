@@ -5,19 +5,19 @@ async function basicExamples(){
     console.log("PokeApi initialized");
     const pokeApi = createClient();
     
-    console.log("Get a specific Pockemon:");
-    const pockemon = await pokeApi.pockemon.get("pikachu")
-    console.dir(pockemon, { depth: null });
+    console.log("Get a specific Pokemon:");
+    const pokemon = await pokeApi.pokemon.get("pikachu")
+    console.dir(pokemon, { depth: null });
 
-    console.log("Pockemon List:");
-    const pockemonList = await pokeApi.pockemon.list(10, 1);
-    console.dir(pockemonList, { depth: null });
+    console.log("Pokemon List:");
+    const pokemonList = await pokeApi.pokemon.list(10, 1);
+    console.dir(pokemonList, { depth: null });
 
-    console.log("Get Pockemon generation");
+    console.log("Get Pokemon generation");
     const generation = await pokeApi.generation.get("generation-i");
     console.log("Generation:", generation);
 
-    console.log("Get Pockemon generation list:");
+    console.log("Get Pokemon generation list:");
     const generationList = await pokeApi.generation.list(5, 0);
     console.dir(generationList, { depth: null });
 }
@@ -25,8 +25,8 @@ async function basicExamples(){
 async function errorHttpExamples() {
     const pokeApi = createClient();
     try{
-        const pockemon = await pokeApi.pockemon.get("not-existing-chu")
-        console.dir(pockemon, { depth: null });
+        const pokemon = await pokeApi.pokemon.get("not-existing-chu")
+        console.dir(pokemon, { depth: null });
     }catch (error) {
         if (error instanceof PockeApiHTTPError) {
             console.error("PockeApiHTTPError:", error.message);
@@ -45,8 +45,8 @@ async function errorNetworkExamples() {
         baseUrl: "https://not-existing.pokeapi.co/api/v2",
     });
     try{
-        const pockemon = await pokeApi.pockemon.get("not-existing-chu")
-        console.dir(pockemon, { depth: null });
+        const pokemon = await pokeApi.pokemon.get("not-existing-chu")
+        console.dir(pokemon, { depth: null });
     }catch (error) {
         if (error instanceof PockeApiHTTPError) {
             console.error("PockeApiHTTPError:", error.message);

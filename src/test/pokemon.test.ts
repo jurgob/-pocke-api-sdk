@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { getPokemon, getPokemonList } from '../funcs/pockemon.js';
+import { getPokemon, getPokemonList } from '../funcs/pokemon.js';
 import { createCoreClient } from '../core.js';
 
 
-describe('Pockemon Functions', () => {
+describe('Pokemon Functions', () => {
     const core = createCoreClient({ baseUrl: 'https://pokeapi.co/api/v2' });
 
     it('should call httpRquest with the correct parameters for getPokemon', async () => {

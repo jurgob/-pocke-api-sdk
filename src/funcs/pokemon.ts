@@ -1,14 +1,14 @@
-import {PockemonListSchema, PockemonSchema, convertPaginationData} from "../api_types.js"
+import {PokemonListSchema, PokemonSchema, convertPaginationData} from "../api_types.js"
 import {Core} from "../core.js";
 
  
  export const getPokemon = async (core: Core, name: string) => {
-    return core.httpRquest({endpoint: `/pokemon/${name}`}, PockemonSchema);
+    return core.httpRequest({endpoint: `/pokemon/${name}`}, PokemonSchema);
 }
 
  export const getPokemonList = async (core: Core, limit: number = 20, offset: number = 0) => {
         const endpoint = `/pokemon?limit=${limit}&offset=${offset}`;
-        const resp = await core.httpRquest({ endpoint}, PockemonListSchema);
+        const resp = await core.httpRequest({ endpoint}, PokemonListSchema);
         const result = {
             ...convertPaginationData(resp),
             results:resp.results.map((item) => ({

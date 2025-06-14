@@ -15,7 +15,7 @@ export function createCoreClient(coreOptions: SDKOptions = {
     baseUrl: "https://pokeapi.co/api/v2",
     fetch: globalThis.fetch
 }) {
-    async function httpRquest<T extends z.ZodTypeAny>(request:SDKHTTPRequest, schema: T): Promise<z.infer<T>>{
+    async function httpRequest<T extends z.ZodTypeAny>(request:SDKHTTPRequest, schema: T): Promise<z.infer<T>>{
         const url = `${coreOptions.baseUrl}${request.endpoint}`;
         const outboundRequest = new Request(url.toString(), {
             method: "GET",
@@ -25,7 +25,7 @@ export function createCoreClient(coreOptions: SDKOptions = {
             }
         });
 
-        const response = await fetch(outboundRequest);
+        const response = await (coreOptions.fetch || globalThis.fetch)(outboundRequest);
          if (!response.ok) {
             throw new PockeApiHTTPError(`Error during http request`, {
                 response,
@@ -38,7 +38,7 @@ export function createCoreClient(coreOptions: SDKOptions = {
      }
 
      return {
-        httpRquest
+        httpRequest
      }
 }
 
