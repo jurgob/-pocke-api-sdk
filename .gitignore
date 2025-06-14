@@ -3,3 +3,4 @@ coverage
 .tsbuildinfo
 .turbo
 .DS_Store
+dist/

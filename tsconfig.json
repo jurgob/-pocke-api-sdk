@@ -14,7 +14,7 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": ".",
+    "outDir": "./dist",
     "strict": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
