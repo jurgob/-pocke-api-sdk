@@ -32,7 +32,6 @@ export function createCoreClient(coreOptions: SDKOptions = {
                 request: outboundRequest,
                 body: await response.text()
             })
-            // throw new Error(`Error during http request: ${response.statusText}`);
          }
             const raw = await response.json();
             return schema.parseAsync(raw);

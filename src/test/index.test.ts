@@ -41,6 +41,14 @@ describe('PokeApi SDK - Pockemon', () => {
         expect(pokemonList.next).toBe(true);
         expect(pokemonList.previous).toBe(false);
     });
+
+    it('should fetch a list of pokemon', async () => {
+        const pokemonList = await pokeApi.pockemon.list(5, 1);
+        expect(pokemonList).toBeDefined();
+        expect(pokemonList.results.length).toBe(5);
+        expect(pokemonList.next).toBe(true);
+        expect(pokemonList.previous).toBe(true);
+    });
     
     
     it('should throw an error when getting a non-existing pockemon', async () => {
