@@ -65,11 +65,27 @@ clone this repo, then install dependencies with:
 
 To run the tests, use the following command:
 
-```ts
-npm test
-```
+```npm test```
+
+
+
+## npm scripts: 
+
+```npm run examples``` -> run examples (one day those examples could be exported in a generated documentaion)
+
+```npm test``` -> run test (you need to be connected)
+
+```npm run typecheck``` -> run typecheck
+
+```npm run all``` -> run all the script that your ci is gonna probably run
+
+```pnm run cov:report``` -> allow to navigate the code coverate report (from the last `npm run test` made)
+
+
+
 
 ### Design Decisions
  - Abstraction: The SDK provides higher-level functions (e.g., getPokemonByName) to simplify common API requests.
 - zod for parsing api responses
+ - Provide some error handling types
 

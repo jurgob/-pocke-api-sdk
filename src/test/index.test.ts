@@ -1,6 +1,16 @@
 import { createClient} from "../index.js"
 import { describe, it, expect } from 'vitest';
+import { PockeApiHTTPError } from "../errors.js";
 describe('PokeApi SDK', () => {
+    
+    it('should be able to initialize the client', () => {
+        let pokeApi = createClient();
+        expect(pokeApi).toBeDefined();
+    });
+
+});
+
+describe('PokeApi SDK - Pockemon', () => {
     let pokeApi = createClient();
 
     it('should fetch a pokemon by name', async () => {
@@ -16,6 +26,19 @@ describe('PokeApi SDK', () => {
         expect(pokemonList.next).toBe(true);
         expect(pokemonList.previous).toBe(false);
     });
+    
+    
+    it('should throw an error when getting a non-existing pockemon', async () => {
+        const error = await pokeApi.pockemon.get("not-existing").catch(e => e);
+        expect(error).toBeDefined();
+        expect(error).toBeInstanceOf(PockeApiHTTPError);
+        expect(error.statusCode).toBe(404);
+    });
+
+});
+
+describe('PokeApi SDK - Generations', () => {
+    let pokeApi = createClient();
 
     it('should fetch a generation by name', async () => {
         const generation = await pokeApi.generation.get("generation-i");
@@ -33,7 +56,10 @@ describe('PokeApi SDK', () => {
     
     
     it('should throw an error when getting a non-existing pockemon', async () => {
-        await expect(pokeApi.pockemon.get("not existing")).rejects.toThrowError("Error during http request: Not Found");
+        const error = await pokeApi.generation.get("not-existing").catch(e => e);
+        expect(error).toBeDefined();
+        expect(error).toBeInstanceOf(PockeApiHTTPError);
+        expect(error.statusCode).toBe(404);
     });
 
 });

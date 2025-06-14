@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PockeApiHTTPError } from "./errors.js";
 export type SDKOptions = {
     fetch?: typeof fetch;
     baseUrl?: string;
@@ -16,15 +17,22 @@ export function createCoreClient(coreOptions: SDKOptions = {
 }) {
     async function httpRquest<T extends z.ZodTypeAny>(request:SDKHTTPRequest, schema: T): Promise<z.infer<T>>{
         const url = `${coreOptions.baseUrl}${request.endpoint}`;
-        const response = await fetch(new Request(url.toString(), {
+        const outboundRequest = new Request(url.toString(), {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 ...coreOptions.headers
             }
-        }));
+        });
+
+        const response = await fetch(outboundRequest);
          if (!response.ok) {
-            throw new Error(`Error during http request: ${response.statusText}`);
+            throw new PockeApiHTTPError(`Error during http request`, {
+                response,
+                request: outboundRequest,
+                body: await response.text()
+            })
+            // throw new Error(`Error during http request: ${response.statusText}`);
          }
             const raw = await response.json();
             return schema.parseAsync(raw);
