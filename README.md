@@ -40,6 +40,8 @@ const generation = await pokeApi.generation.get("generation-i");
 const generationList = await pokeApi.generation.list(5, 0);
 ```
 
+### Individual components usage
+
 Alternatively, you can import individual components from the SDK, such as:
 
 ```ts
@@ -47,6 +49,29 @@ import { getPokemon, getPokemonList } from '../funcs/pockemon.js';
 import { createCoreClient } from '../core.js';
 
 const result = await getPokemon(core, pokemonName);
+```
+
+### Error Handling
+
+This is an example of Error handling 
+
+```ts
+const pokeApi = createClient();
+try{
+    const pockemon = await pokeApi.pockemon.get("not-existing-chu")
+    console.dir(pockemon, { depth: null });
+}catch (error) {
+    if (error instanceof PockeApiHTTPError) {
+        console.error("PockeApiHTTPError:", error.message);
+        console.error("Status Code:", error.statusCode);
+        console.error("Response Body:", error.body);
+    } else if(error instanceof TypeError){
+        console.error("Probably some network error happend:", error);
+    } else{
+        console.error("Unexpected error happend:", error);
+    }
+}
+
 ```
 
 
