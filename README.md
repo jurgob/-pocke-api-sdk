@@ -11,7 +11,7 @@ This SDK covers the following PokeAPI endpoints:
 
 It also includes pagination support for retrieving lists of resources.
 
-## Installation
+## Installation (NOT DONE YET)
 
 ```bash
 # Example using npm
@@ -55,7 +55,7 @@ for more example look at the `src/examples.ts` file in this repository
 
 ## Contributing
 
-## Installing (NOT DONE YET)
+## Installing
 
 clone this repo, then install dependencies with:
 
