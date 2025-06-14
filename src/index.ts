@@ -1,6 +1,3 @@
-
-
-// import { z } from "zod";
 import { createCoreClient, SDKOptions } from "./core.js";
 import {getPokemon, getPokemonList} from "./funcs/pokemon.js";
 import {getGeneration, getGenerationList} from "./funcs/generation.js";
